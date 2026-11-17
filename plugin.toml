@@ -1,0 +1,27 @@
+# A Vesper plugin: this file describes it. Everything except `name` is optional.
+name        = "Hello plugin"
+version     = "0.1.0"
+author      = "Your name"
+description = "Example plugin: a bar widget, a launcher action and a background program"
+license     = "MIT"
+homepage    = "https://github.com/your-name/vesper-plugin-template"
+api         = 1                 # the plugin API this was written for
+
+# A program started with the session while the plugin is on (it runs in this folder, as you).
+# It is stopped when you turn the plugin off. Its output goes to ~/.local/state/vesper/plugin-<folder>.log
+run = "./daemon.sh"
+
+# A widget for the top bar. `command` runs every `interval` seconds and its first line is shown
+# (an empty line hides the widget). "glyph|text" draws a Nerd Font glyph before the text.
+# After turning the plugin on, place the widget in Settings > Bar > Items.
+[[bar_item]]
+id       = "greeting"
+label    = "Hello widget"
+command  = "./status.sh"
+interval = 10
+on_click = "./clicked.sh"
+
+# An entry in the launcher's app list (Mod+Space).
+[[action]]
+name    = "Say hello"
+command = "./clicked.sh"
